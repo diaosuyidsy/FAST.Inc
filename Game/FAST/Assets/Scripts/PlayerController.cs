@@ -56,44 +56,50 @@ public class PlayerController : MonoBehaviour
 			FlipCharacter ();
 		}
 
-		Animations (moveHorizontal);
+		Animations (moveHorizontal, moveVertical);
 
 	}
 
 	float Jump (float moveVertical)
 	{
-
+	
 		if (isOnGround) {
 			moveVertical = -gravity * Time.deltaTime;
-
-			if (Input.GetKeyDown (KeyCode.LeftShift) && playerOne) {
+	
+			if ((Input.GetKeyDown (KeyCode.LeftShift) && playerOne) || (Input.GetKeyDown (KeyCode.Space) && !playerOne)) {
 				moveVertical = jumpForce;
-				isOnGround = false;
-			} else if (Input.GetKeyDown (KeyCode.Space) && !playerOne) {
-				moveVertical = jumpForce;
-				isOnGround = false;
-			}
+			} 
 		} else {
 			moveVertical -= gravity * Time.deltaTime;
 		}
-
+	
 		return moveVertical;
 	}
-
-	void Animations(float moveHorizontal){
+		
+	void Animations(float moveHorizontal, float moveVertical){
 		bool oneWalking = false;
 		bool twoWalking = false;
+		bool oneJumping = false;
+		bool twoJumping = false;
 
 		if (playerOne) {
 			if (moveHorizontal != 0f) {
 				oneWalking = true;
 			}
+			if (moveVertical > 0f) {
+				oneJumping = true;
+			}
 			anim.SetBool ("oneIsWalking", oneWalking);
+			anim.SetBool ("oneIsJumping", oneJumping);
 		} else if (!playerOne){
 			if (moveHorizontal != 0f) {
 				twoWalking = true;
 			}
+			if (moveVertical > 0f) {
+				twoJumping = true;
+			}
 			anim.SetBool ("twoIsWalking", twoWalking);
+			anim.SetBool ("twoIsJumping", twoJumping);
 		}
 	}
 
