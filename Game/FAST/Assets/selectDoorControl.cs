@@ -8,7 +8,7 @@ public class selectDoorControl : MonoBehaviour
 {
 	public Text Prompt;
 	public bool correctDoor;
-	public string InteractStr = "E";
+	public string InteractStr = "e";
 	bool canType;
 
 	void Update ()
