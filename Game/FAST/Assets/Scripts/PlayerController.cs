@@ -60,7 +60,10 @@ public class PlayerController : MonoBehaviour
 
 	}
 
-
+	public void OnDeath ()
+	{
+		
+	}
 
 	float Jump (float moveVertical)
 	{
