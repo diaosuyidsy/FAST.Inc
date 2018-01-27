@@ -28,10 +28,9 @@ public class PlayerController : MonoBehaviour
 
 	}
 
-	void Update ()
-	{
-		if (Input.GetKeyDown (KeyCode.F))
-			OnDeath ();
+	void Update(){
+		if (Input.GetKeyDown(KeyCode.F))
+			OnDeath();
 	}
 	
 	// Update is called once per frame
@@ -66,7 +65,12 @@ public class PlayerController : MonoBehaviour
 
 	}
 
+<<<<<<< HEAD
 	public void OnDeath ()
+	{
+		
+=======
+	public void OnDeath()
 	{
 		
 		foreach (AnimatorControllerParameter p in anim.parameters) {
@@ -78,6 +82,7 @@ public class PlayerController : MonoBehaviour
 
 		anim.Play ("BoyDeath");
 		anim.Play ("GirlDeath");
+>>>>>>> dde61d3a4a1fea9c8fe651e79f4255ccea0d1df5
 	}
 
 	float Jump (float moveVertical)
