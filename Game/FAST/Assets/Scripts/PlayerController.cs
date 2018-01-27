@@ -31,24 +31,24 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate ()
 	{
+		if (!DialogueControl.DC.GameStarted)
+			return;
 		Movement ();
 	}
 
 	void Movement ()
 	{
-
+		moveVertical = rb.velocity.y;
 		moveVertical = Jump (moveVertical);
 
 		moveHorizontal = playerOne ? Input.GetAxisRaw ("HorizontalOne") : Input.GetAxisRaw ("HorizontalTwo");
 
-		Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
-
 		//check if player is standing on ground
 		isOnGround = Physics2D.Linecast (transform.position, groundCheck.position, whatIsGround) ||
-		Physics2D.Linecast (transform.position + new Vector3 (0.5f, 0, 0), groundCheck.position + new Vector3 (0.5f, 0, 0), whatIsGround) ||
-		Physics2D.Linecast (transform.position - new Vector3 (0.5f, 0, 0), groundCheck.position - new Vector3 (0.5f, 0, 0), whatIsGround);
+		Physics2D.Linecast (transform.position + new Vector3 (0.5f, 0, transform.position.z), groundCheck.position + new Vector3 (0.5f, 0, groundCheck.position.z), whatIsGround) ||
+		Physics2D.Linecast (transform.position - new Vector3 (0.5f, 0, transform.position.z), groundCheck.position - new Vector3 (0.5f, 0, groundCheck.position.z), whatIsGround);
 
-		rb.velocity = movement * speed;
+		rb.velocity = new Vector2 (moveHorizontal * speed, moveVertical);
 
 		if (moveHorizontal > 0 && !facingRight) {
 			FlipCharacter ();
@@ -62,21 +62,19 @@ public class PlayerController : MonoBehaviour
 
 	float Jump (float moveVertical)
 	{
-	
-		if (isOnGround) {
-			moveVertical = -gravity * Time.deltaTime;
-	
-			if ((Input.GetKeyDown (KeyCode.LeftShift) && playerOne) || (Input.GetKeyDown (KeyCode.Space) && !playerOne)) {
-				moveVertical = jumpForce;
+		if ((Input.GetKeyDown (KeyCode.LeftShift) && playerOne) || (Input.GetKeyDown (KeyCode.Space) && !playerOne)) {
+			
+			if (isOnGround) {
+				moveVertical = 0f;
+				rb.AddForce (new Vector2 (0, jumpForce));
 			} 
-		} else {
-			moveVertical -= gravity * Time.deltaTime;
-		}
+		} 
 	
 		return moveVertical;
 	}
-		
-	void Animations(float moveHorizontal, float moveVertical){
+
+	void Animations (float moveHorizontal, float moveVertical)
+	{
 		bool oneWalking = false;
 		bool twoWalking = false;
 		bool oneJumping = false;
@@ -100,7 +98,7 @@ public class PlayerController : MonoBehaviour
 			anim.SetBool ("oneIsIdle", oneIdle);
 			anim.SetBool ("oneIsWalking", oneWalking);
 			anim.SetBool ("oneIsJumping", oneJumping);
-		} else if (!playerOne){
+		} else if (!playerOne) {
 			if (moveHorizontal != 0f) {
 				twoWalking = true;
 			}
@@ -112,12 +110,27 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	void FlipCharacter(){
+	void FlipCharacter ()
+	{
 
 		//Changes bool value of looking right to right direction.
 		facingRight = !facingRight;
 
 		//Rotates 180 degrees.
 		transform.Rotate (0, 180, 0);
+	}
+
+	void OnCollisionEnter2D (Collision2D coll)
+	{
+		if (coll.collider.tag == "MovingPlatform") {
+			transform.parent = coll.transform;
+		}
+	}
+
+	void OnCollisionExit2D (Collision2D coll)
+	{
+		if (coll.collider.tag == "MovingPlatform") {
+			transform.parent = null;
+		}
 	}
 }
