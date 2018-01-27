@@ -81,14 +81,23 @@ public class PlayerController : MonoBehaviour
 		bool twoWalking = false;
 		bool oneJumping = false;
 		bool twoJumping = false;
+		bool oneIdle = true;
+		bool twoIdle = true;
 
 		if (playerOne) {
 			if (moveHorizontal != 0f) {
 				oneWalking = true;
+				oneIdle = false;
 			}
 			if (moveVertical > 0f) {
 				oneJumping = true;
+				oneIdle = false;
 			}
+			if (moveVertical > 0f && moveHorizontal != 0f) {
+				oneJumping = true;
+				oneWalking = false;
+			}
+			anim.SetBool ("oneIsIdle", oneIdle);
 			anim.SetBool ("oneIsWalking", oneWalking);
 			anim.SetBool ("oneIsJumping", oneJumping);
 		} else if (!playerOne){
