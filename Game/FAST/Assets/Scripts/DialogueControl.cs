@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class DialogueControl : MonoBehaviour
 {
-	public bool LeftGameStarted = false;
-	public bool RightGameStarted = false;
+	public static DialogueControl DC;
+	public bool GameStarted = false;
 
 
 	public Text Dialogue_Box_Text_Right;
@@ -19,6 +19,13 @@ public class DialogueControl : MonoBehaviour
 
 	Queue<string> openingDialogueQ_R;
 	Queue<string> openingDialogueQ_L;
+
+	void Awake ()
+	{
+		if (DC == null) {
+			DC = this;
+		}
+	}
 
 	void Start ()
 	{
@@ -39,20 +46,19 @@ public class DialogueControl : MonoBehaviour
 
 	void Update ()
 	{
-		if (Input.GetKeyUp (KeyCode.Space) && !RightGameStarted) {
-			StartCoroutine (TypeSentence (openingDialogueQ_R.Dequeue (), true));
+		if (GameStarted)
+			return;
+		if (Input.GetKeyUp (KeyCode.Return)) {
 			if (openingDialogueQ_R.Count <= 0) {
-				Dialogue_Box_Text_Right.gameObject.SetActive (false);
-				RightGameStarted = true;
-			}
-		}
+				Dialogue_Box_Text_Right.transform.parent.gameObject.SetActive (false);
+				Dialogue_Box_Text_Left.transform.parent.gameObject.SetActive (false);
 
-		if (Input.GetKeyUp (KeyCode.LeftShift) && !LeftGameStarted) {
-			StartCoroutine (TypeSentence (openingDialogueQ_L.Dequeue (), false));
-			if (openingDialogueQ_L.Count <= 0) {
-				Dialogue_Box_Text_Left.gameObject.SetActive (false);
-				LeftGameStarted = true;
+				GameStarted = true;
 			}
+			StartCoroutine (TypeSentence (openingDialogueQ_R.Dequeue (), true));
+			StartCoroutine (TypeSentence (openingDialogueQ_L.Dequeue (), false));
+
+
 		}
 	}
 
