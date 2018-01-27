@@ -550,7 +550,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1228307990566650, guid: 2e84b51065f064b4d83995894699d78c, type: 2}
       propertyPath: m_Name
-      value: rocks (5)
+      value: Do
       objectReference: {fileID: 0}
     - target: {fileID: 4311894633190558, guid: 2e84b51065f064b4d83995894699d78c, type: 2}
       propertyPath: m_LocalScale.x
@@ -926,7 +926,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1228307990566650, guid: 2e84b51065f064b4d83995894699d78c, type: 2}
       propertyPath: m_Name
-      value: rocks (2)
+      value: Ti
       objectReference: {fileID: 0}
     - target: {fileID: 4311894633190558, guid: 2e84b51065f064b4d83995894699d78c, type: 2}
       propertyPath: m_LocalScale.x
@@ -1192,7 +1192,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1228307990566650, guid: 2e84b51065f064b4d83995894699d78c, type: 2}
       propertyPath: m_Name
-      value: rocks (6)
+      value: Mi
       objectReference: {fileID: 0}
     - target: {fileID: 4311894633190558, guid: 2e84b51065f064b4d83995894699d78c, type: 2}
       propertyPath: m_LocalScale.x
@@ -1358,11 +1358,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4236791435380692, guid: 3bd7eca322b62457393497cde4668c8e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -5.45
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 4236791435380692, guid: 3bd7eca322b62457393497cde4668c8e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.19
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 4236791435380692, guid: 3bd7eca322b62457393497cde4668c8e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1402,6 +1402,26 @@ Prefab:
     - target: {fileID: 1480555584002442, guid: 3bd7eca322b62457393497cde4668c8e, type: 2}
       propertyPath: m_Name
       value: BoyModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 61814731752601458, guid: 3bd7eca322b62457393497cde4668c8e,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 61814731752601458, guid: 3bd7eca322b62457393497cde4668c8e,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61814731752601458, guid: 3bd7eca322b62457393497cde4668c8e,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114658828064315006, guid: 3bd7eca322b62457393497cde4668c8e,
+        type: 2}
+      propertyPath: playerOne
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3bd7eca322b62457393497cde4668c8e, type: 2}
@@ -1447,7 +1467,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1228307990566650, guid: 2e84b51065f064b4d83995894699d78c, type: 2}
       propertyPath: m_Name
-      value: rocks (1)
+      value: So
       objectReference: {fileID: 0}
     - target: {fileID: 4311894633190558, guid: 2e84b51065f064b4d83995894699d78c, type: 2}
       propertyPath: m_LocalScale.x
@@ -2313,7 +2333,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1228307990566650, guid: 2e84b51065f064b4d83995894699d78c, type: 2}
       propertyPath: m_Name
-      value: rocks (7)
+      value: Re
       objectReference: {fileID: 0}
     - target: {fileID: 4311894633190558, guid: 2e84b51065f064b4d83995894699d78c, type: 2}
       propertyPath: m_LocalScale.x
@@ -2570,7 +2590,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1228307990566650, guid: 2e84b51065f064b4d83995894699d78c, type: 2}
       propertyPath: m_Name
-      value: rocks (8)
+      value: Do
       objectReference: {fileID: 0}
     - target: {fileID: 4311894633190558, guid: 2e84b51065f064b4d83995894699d78c, type: 2}
       propertyPath: m_LocalScale.x
@@ -2903,7 +2923,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1228307990566650, guid: 2e84b51065f064b4d83995894699d78c, type: 2}
       propertyPath: m_Name
-      value: rocks (3)
+      value: Fa
       objectReference: {fileID: 0}
     - target: {fileID: 4311894633190558, guid: 2e84b51065f064b4d83995894699d78c, type: 2}
       propertyPath: m_LocalScale.x
@@ -3176,6 +3196,10 @@ Prefab:
     - target: {fileID: 1480555584002442, guid: 3bd7eca322b62457393497cde4668c8e, type: 2}
       propertyPath: m_Name
       value: GirlModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480555584002442, guid: 3bd7eca322b62457393497cde4668c8e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3bd7eca322b62457393497cde4668c8e, type: 2}
@@ -3473,7 +3497,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1d077b2c26ab34988924fc58d21d6cb0, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

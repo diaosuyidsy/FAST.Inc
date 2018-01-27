@@ -1,9 +1,13 @@
 fileFormatVersion: 2
-guid: 50060aa6b0464433aaa0fb85f1c3842a
-timeCreated: 1517071091
+guid: 653e66b1fbbc94d1ea2108d01381e1a3
+timeCreated: 1517077078
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: boy_idle_0
+    21300002: boy_idle_1
+    21300004: boy_idle_2
+    21300006: boy_idle_3
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -108,7 +112,63 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: boy_idle_0
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 1249
+        width: 215
+        height: 533
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: boy_idle_1
+      rect:
+        serializedVersion: 2
+        x: 1454
+        y: 1249
+        width: 215
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: boy_idle_2
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 225
+        width: 215
+        height: 523
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: boy_idle_3
+      rect:
+        serializedVersion: 2
+        x: 1454
+        y: 225
+        width: 215
+        height: 502
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 
