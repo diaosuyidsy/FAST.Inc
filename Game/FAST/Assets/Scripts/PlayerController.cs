@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
 			FlipCharacter ();
 		}
 
-		Animations (moveHorizontal);
+		Animations (moveHorizontal, moveVertical);
 
 	}
 
@@ -80,20 +80,30 @@ public class PlayerController : MonoBehaviour
 		return moveVertical;
 	}
 
-	void Animations(float moveHorizontal){
+	void Animations(float moveHorizontal, float moveVertical){
 		bool oneWalking = false;
 		bool twoWalking = false;
+		bool oneJumping = false;
+		bool twoJumping = false;
 
 		if (playerOne) {
 			if (moveHorizontal != 0f) {
 				oneWalking = true;
 			}
+			if (moveVertical > 0f) {
+				oneJumping = true;
+			}
 			anim.SetBool ("oneIsWalking", oneWalking);
+			anim.SetBool ("oneIsJumping", oneJumping);
 		} else if (!playerOne){
 			if (moveHorizontal != 0f) {
 				twoWalking = true;
 			}
+			if (moveVertical > 0f) {
+				twoJumping = true;
+			}
 			anim.SetBool ("twoIsWalking", twoWalking);
+			anim.SetBool ("twoIsJumping", twoJumping);
 		}
 	}
 
