@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class blockHitScript : MonoBehaviour {
+public class BlockHitScript : MonoBehaviour {
+
+	AudioSource sound; 
 
 	// Use this for initialization
 	void Start () {
-		
+		sound = GetComponent<AudioSource> ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	void OnCollisionEnter2D (Collision2D coll){
+		if (coll.gameObject.tag == "PlayerOne" || coll.gameObject.tag == "PlayerTwo") {
+			sound.Play ();
+		}
 	}
 }
