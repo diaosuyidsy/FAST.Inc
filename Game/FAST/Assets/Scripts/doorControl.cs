@@ -13,11 +13,15 @@ public class doorControl : MonoBehaviour
 
 	void Start ()
 	{
-		CodeEntered = new bool[3];
+		CodeEntered = new bool[maxCodeNum];
 	}
 
 	public void codeEnterCorrectly (int num)
 	{
+		if (num < 0) {
+			//TODO: Death here.
+			return;
+		}
 		CodeEntered [num - 1] = true;
 		if (CodeEntered.All (code => code)) {
 			startLifting = true;
