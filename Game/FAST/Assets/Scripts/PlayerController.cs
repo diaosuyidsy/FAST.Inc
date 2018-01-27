@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-	void Animations(float moveHorizontal){
+	void Animations(float moveHorizontal, float moveVertical){
 		bool oneWalking = false;
 		bool twoWalking = false;
 		bool oneJumping = false;
