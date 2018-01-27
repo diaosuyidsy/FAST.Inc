@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
 			FlipCharacter ();
 		}
 
-		Animations (moveHorizontal);
+		Animations (moveHorizontal, moveVertical);
 
 	}
 
@@ -76,41 +76,32 @@ public class PlayerController : MonoBehaviour
 		return moveVertical;
 	}
 
-	//	float Jump (float moveVertical)
-	//	{
-	//
-	//		if (isOnGround) {
-	//			moveVertical = 0f;
-	//
-	//			if (Input.GetKeyDown (KeyCode.LeftShift) && playerOne) {
-	//				GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, jumpForce), ForceMode2D.Impulse);
-	//			} else if (Input.GetKeyDown (KeyCode.Space) && !playerOne) {
-	//				GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, jumpForce), ForceMode2D.Impulse);
-	//			}
-	//		}
-	//
-	//		if (Input.GetKeyUp (KeyCode.LeftShift) && playerOne) {
-	//			moveVertical = 0f;
-	//		}
-	//		if (Input.GetKeyUp (KeyCode.Space) && !playerOne) {
-	//			moveVertical = 0f;
-	//		}
-	//		return moveVertical;
-	//	}
-	void Animations(float moveHorizontal){
+
+
+	void Animations(float moveHorizontal, float moveVertical){
 		bool oneWalking = false;
 		bool twoWalking = false;
+		bool oneJumping = false;
+		bool twoJumping = false;
 
 		if (playerOne) {
 			if (moveHorizontal != 0f) {
 				oneWalking = true;
 			}
+			if (moveVertical > 0f) {
+				oneJumping = true;
+			}
 			anim.SetBool ("oneIsWalking", oneWalking);
+			anim.SetBool ("oneIsJumping", oneJumping);
 		} else if (!playerOne){
 			if (moveHorizontal != 0f) {
 				twoWalking = true;
 			}
+			if (moveVertical > 0f) {
+				twoJumping = true;
+			}
 			anim.SetBool ("twoIsWalking", twoWalking);
+			anim.SetBool ("twoIsJumping", twoJumping);
 		}
 	}
 
