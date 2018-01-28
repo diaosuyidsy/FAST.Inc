@@ -27,16 +27,12 @@ public class PlayerController : MonoBehaviour
 		anim = GetComponentInChildren<Animator> ();
 
 	}
-
-	void Update ()
-	{
-		if (Input.GetKeyDown (KeyCode.F))
-			GameManager.GM.OnDeath ();
-	}
 	
 	// Update is called once per frame
 	void FixedUpdate ()
 	{
+		if (GameManager.GM.ActionLocked)
+			return;
 		if (!DialogueControl.DC.GameStarted)
 			return;
 		Movement ();
