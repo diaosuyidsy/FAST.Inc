@@ -96,9 +96,11 @@ public class doorControl : MonoBehaviour
 
 		Debug.Log ("Open SESAME");
 		GetComponent<Animator> ().SetBool ("DoorOpen", true);
-		otherDoor.GetComponent<Animator> ().SetBool ("DoorOpen", true);
 		audio.Play ();
-		coll.enabled = !coll.enabled;
+		coll.enabled = false;
 		timerMusic.GetComponent<AudioSource> ().Stop ();
+
+		otherDoor.GetComponent<Animator> ().SetBool ("DoorOpen", true);
+		otherDoor.GetComponent<BoxCollider2D> ().enabled = false;
 	}
 }
