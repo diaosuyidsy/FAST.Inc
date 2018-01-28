@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
 	IEnumerator delayBlackOut (float time)
 	{
 		yield return new WaitForSeconds (time);
-		float timer = 2f;
+		float timer = 1f;
 		while (timer >= 0f) {
 			timer -= Time.deltaTime;
 			camera_R.orthographicSize -= Time.deltaTime;

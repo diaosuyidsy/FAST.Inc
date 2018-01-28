@@ -22,8 +22,9 @@ public class doorControl : MonoBehaviour
 			//TODO: Death here.
 			return;
 		}
+		Debug.Log ("Code Entered Correctly");
 		CodeEntered [num - 1] = true;
-
+		Debug.Log (CodeEntered.All (code => code));
 		if (CodeEntered.All (code => code)) {
 			Debug.Log ("Open SESAME");
 			GetComponent<Animator> ().SetBool ("DoorOpen", true);
