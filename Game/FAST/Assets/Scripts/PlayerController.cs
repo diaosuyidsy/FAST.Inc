@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
 	void Update ()
 	{
 		if (Input.GetKeyDown (KeyCode.F))
-			OnDeath ();
+			GameManager.GM.OnDeath ();
 	}
 	
 	// Update is called once per frame
@@ -66,19 +66,19 @@ public class PlayerController : MonoBehaviour
 
 	}
 
-	public void OnDeath ()
-	{
-		
-		foreach (AnimatorControllerParameter p in anim.parameters) {
-			anim.SetBool (p.name, false);
-		}
-			
-		//anim.SetBool ("oneIsDead", true);
-		//anim.SetBool ("twoIsDead", true);
-
-		anim.Play ("BoyDeath");
-		anim.Play ("GirlDeath");
-	}
+	//	public void OnDeath ()
+	//	{
+	//
+	//		foreach (AnimatorControllerParameter p in anim.parameters) {
+	//			anim.SetBool (p.name, false);
+	//		}
+	//
+	//		//anim.SetBool ("oneIsDead", true);
+	//		//anim.SetBool ("twoIsDead", true);
+	//
+	//		anim.Play ("BoyDeath");
+	//		anim.Play ("GirlDeath");
+	//	}
 
 	float Jump (float moveVertical)
 	{

@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 public class DeathZone : MonoBehaviour
 {
 
-	void OnTriggerEnter2D (Collider2D coll)
+	void OnCollisionEnter2D (Collision2D coll)
 	{
-		if (coll.tag == "PlayerOne" || coll.tag == "PlayerTwo") {
-			SceneManager.LoadScene ("MainScene");
+		if (coll.collider.tag == "PlayerOne" || coll.collider.tag == "PlayerTwo") {
+			GameManager.GM.OnDeath ();
 		}
 	}
 }

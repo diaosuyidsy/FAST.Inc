@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4048623332184702}
   - component: {fileID: 114063055137460210}
+  - component: {fileID: 114602870427987198}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -57,3 +58,16 @@ MonoBehaviour:
   DialogueAsset_R: {fileID: 4900000, guid: 3e805e8e75fb046f4908af5477e4bc6d, type: 3}
   DialogueAsset_L: {fileID: 4900000, guid: 309074714056047d8ba35360b1f89f70, type: 3}
   rowLimit: 90
+--- !u!114 &114602870427987198
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1189739572217224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65a0d8c246393437eaea02c80a3bdb8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerOne: {fileID: 0}
+  playerTwo: {fileID: 0}
