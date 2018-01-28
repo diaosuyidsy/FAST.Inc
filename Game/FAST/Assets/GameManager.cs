@@ -31,8 +31,12 @@ public class GameManager : MonoBehaviour
 
 	void Start ()
 	{
+<<<<<<< HEAD
+//		TimeTriggered ();
+=======
 		cameraSizeNormal = camera_L.orthographicSize;
 		TimeTriggered ();
+>>>>>>> f47cc91bee6f7a45a8795597b7de06eecaf16fbd
 	}
 
 	public void OnDeath ()
