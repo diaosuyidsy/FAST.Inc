@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
 		if (!DialogueControl.DC.GameStarted)
 			return;
 		Movement ();
+		Debug.Log (isOnGround);
 	}
 
 	void Movement ()
@@ -63,22 +64,7 @@ public class PlayerController : MonoBehaviour
 		}
 
 		Animations (moveHorizontal, moveVertical);
-
 	}
-
-	//	public void OnDeath ()
-	//	{
-	//
-	//		foreach (AnimatorControllerParameter p in anim.parameters) {
-	//			anim.SetBool (p.name, false);
-	//		}
-	//
-	//		//anim.SetBool ("oneIsDead", true);
-	//		//anim.SetBool ("twoIsDead", true);
-	//
-	//		anim.Play ("BoyDeath");
-	//		anim.Play ("GirlDeath");
-	//	}
 
 	float Jump (float moveVertical)
 	{
