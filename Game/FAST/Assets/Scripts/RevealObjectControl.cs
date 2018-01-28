@@ -10,6 +10,7 @@ public class RevealObjectControl : MonoBehaviour
 	{
 		if (coll.tag == "PlayerOne" || coll.tag == "PlayerTwo") {
 			RevealingObject.SetActive (true);
+			Debug.Log ("We are in the the trigger");
 		}
 	}
 
@@ -17,6 +18,7 @@ public class RevealObjectControl : MonoBehaviour
 	{
 		if (coll.tag == "PlayerOne" || coll.tag == "PlayerTwo") {
 			RevealingObject.SetActive (false);
+			Debug.Log ("We are out of the trigger");
 		}
 	}
 
