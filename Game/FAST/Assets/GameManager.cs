@@ -1,22 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-	
 	public static GameManager GM;
 
 	public GameObject playerOne;
 	public GameObject playerTwo;
 	public Camera camera_R;
 	public Camera camera_L;
+	public Text CountDownLeft;
+	public Text CountDownRight;
+
+	int timer = 60;
+	bool startTimer = false;
 
 	void Awake ()
 	{
 		if (GM == null) {
 			GM = this;
 		}
+	}
+
+	void Start ()
+	{
+		TimeTriggered ();
 	}
 
 	public void OnDeath ()
@@ -34,6 +44,29 @@ public class GameManager : MonoBehaviour
 		animOne.Play ("BoyDeath");
 		animTwo.Play ("GirlDeath");
 		StartCoroutine (delayBlackOut (1f));
+	}
+
+
+
+	public void TimeTriggered ()
+	{
+		if (startTimer)
+			return;
+		startTimer = true;
+		StartCoroutine (tt ());
+	}
+
+	IEnumerator tt ()
+	{
+		while (timer > 0) {
+			timer--;
+			CountDownLeft.text = timer.ToString ();
+			CountDownRight.text = timer.ToString ();
+			yield return new WaitForSeconds (1f);
+		}
+		if (timer <= 0) {
+			OnDeath ();
+		}
 	}
 
 	IEnumerator delayBlackOut (float time)
