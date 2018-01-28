@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimerTriggerScript : MonoBehaviour {
+public class TimerTriggerScript : MonoBehaviour
+{
 
 	AudioSource audio;
 	public GameObject otherTrigger;
@@ -10,21 +11,24 @@ public class TimerTriggerScript : MonoBehaviour {
 	bool otherAudioPlaying = false;
 	bool alreadyPlayed = false;
 
-	void Start(){
+	void Start ()
+	{
 		audio = GetComponent<AudioSource> ();
 	}
 
-	void OnTriggerEnter2D(Collider2D coll){
+	void OnTriggerEnter2D (Collider2D coll)
+	{
 
 		otherAudioPlaying = otherTrigger.GetComponent<AudioSource> ().isPlaying;
 		
-		if (otherAudioPlaying){
+		if (otherAudioPlaying) {
 			return;
 		}
 			
 		if (coll.tag == "PlayerOne" || coll.tag == "PlayerTwo") {
 			if (!alreadyPlayed) {
 				audio.Play ();
+				GameManager.GM.TimeTriggered ();
 				alreadyPlayed = true;
 			}
 		}
