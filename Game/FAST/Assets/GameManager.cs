@@ -13,8 +13,13 @@ public class GameManager : MonoBehaviour
 	public Camera camera_L;
 	public Text CountDownLeft;
 	public Text CountDownRight;
+	public bool ActionLocked = false;
 
-	int timer = 60;
+	public GameObject OneRespawnPlace;
+	public GameObject TwoRespawnPlace;
+	float cameraSizeNormal;
+
+	int timer = 5;
 	bool startTimer = false;
 
 	void Awake ()
@@ -26,11 +31,17 @@ public class GameManager : MonoBehaviour
 
 	void Start ()
 	{
+<<<<<<< HEAD
 //		TimeTriggered ();
+=======
+		cameraSizeNormal = camera_L.orthographicSize;
+		TimeTriggered ();
+>>>>>>> f47cc91bee6f7a45a8795597b7de06eecaf16fbd
 	}
 
 	public void OnDeath ()
 	{
+		ActionLocked = true;
 		Animator animOne = playerOne.GetComponentInChildren <Animator> ();
 		Animator animTwo = playerTwo.GetComponentInChildren <Animator> ();
 
@@ -46,7 +57,25 @@ public class GameManager : MonoBehaviour
 		StartCoroutine (delayBlackOut (1f));
 	}
 
-
+	void respawn ()
+	{
+		ActionLocked = false;
+		//Correct Camera
+		camera_R.orthographicSize = cameraSizeNormal;
+		camera_L.orthographicSize = cameraSizeNormal;
+		// Make Player Correct Animation
+		Animator animOne = playerOne.GetComponentInChildren <Animator> ();
+		Animator animTwo = playerTwo.GetComponentInChildren <Animator> ();
+		animOne.SetTrigger ("oneIsRespawn");
+		animTwo.SetTrigger ("twoIsRespawn");
+		//make them at the respawn place;
+		if (OneRespawnPlace != null) {
+			playerOne.transform.position = OneRespawnPlace.transform.position;
+		}
+		if (TwoRespawnPlace != null) {
+			playerTwo.transform.position = TwoRespawnPlace.transform.position;
+		}
+	}
 
 	public void TimeTriggered ()
 	{
@@ -72,13 +101,15 @@ public class GameManager : MonoBehaviour
 	IEnumerator delayBlackOut (float time)
 	{
 		yield return new WaitForSeconds (time);
-		float timer = 1f;
+		float timer = 1.5f;
 		while (timer >= 0f) {
 			timer -= Time.deltaTime;
 			camera_R.orthographicSize -= Time.deltaTime;
 			camera_L.orthographicSize -= Time.deltaTime;
 			yield return null;
 		}
+		yield return new WaitForSeconds (5f);
+		respawn ();
 	}
 
 }

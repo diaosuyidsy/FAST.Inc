@@ -18,6 +18,11 @@ public class TimerTriggerScript : MonoBehaviour
 
 	void OnTriggerEnter2D (Collider2D coll)
 	{
+		if (coll.tag == "PlayerOne")
+			GameManager.GM.OneRespawnPlace = gameObject;
+		if (coll.tag == "PlayerTwo")
+			GameManager.GM.TwoRespawnPlace = gameObject;
+		
 		otherAudioPlaying = otherTrigger.GetComponent<AudioSource> ().isPlaying;
 		
 		if (otherAudioPlaying) {
