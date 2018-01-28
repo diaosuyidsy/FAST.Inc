@@ -47,7 +47,7 @@ public class platformControl : MonoBehaviour
 
 	void extendPillar ()
 	{
-		pillar.transform.localScale += new Vector3 (0, Time.deltaTime * 0.34f);
+		pillar.transform.localScale += new Vector3 (0, Time.deltaTime * 0.34f * ((nextTargetPoint.y - transform.position.y > 0) ? 1f : -1f));
 	}
 		
 }
