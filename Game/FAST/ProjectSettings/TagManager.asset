@@ -5,8 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlayerOne
-  - PlayerTwo
-  - MovingPlatform
   layers:
   - Default
   - TransparentFX
@@ -43,14 +41,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Background
-    uniqueID: 3512614951
-    locked: 0
-  - name: Player
-<<<<<<< HEAD
-    uniqueID: 2205731761
-=======
-    uniqueID: 3236161337
->>>>>>> 375ba22ef31ad41b68e5ef8905030be7931d2aee
     locked: 0
