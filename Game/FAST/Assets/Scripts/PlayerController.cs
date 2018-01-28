@@ -40,7 +40,6 @@ public class PlayerController : MonoBehaviour
 		if (!DialogueControl.DC.GameStarted)
 			return;
 		Movement ();
-		Debug.Log (isOnGround);
 	}
 
 	void Movement ()

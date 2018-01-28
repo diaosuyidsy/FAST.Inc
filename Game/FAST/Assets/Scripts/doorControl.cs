@@ -23,20 +23,10 @@ public class doorControl : MonoBehaviour
 			return;
 		}
 		CodeEntered [num - 1] = true;
-		if (CodeEntered.All (code => code)) {
-			startLifting = true;
-		}
-	}
 
-	void Update ()
-	{
-		if (startLifting) {
-			liftTimer -= Time.fixedDeltaTime;
-			if (liftTimer <= 0f) {
-				startLifting = false;
-				liftTimer = 1f;
-			}
-			transform.Translate (Vector2.up * Time.deltaTime);
+		if (CodeEntered.All (code => code)) {
+			Debug.Log ("Open SESAME");
+			GetComponent<Animator> ().SetBool ("DoorOpen", true);
 		}
 	}
 }
