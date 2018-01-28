@@ -27,6 +27,12 @@ public class PlayerController : MonoBehaviour
 		anim = GetComponentInChildren<Animator> ();
 
 	}
+
+	void Update ()
+	{
+		if (Input.GetKeyDown (KeyCode.F))
+			OnDeath ();
+	}
 	
 	// Update is called once per frame
 	void FixedUpdate ()
@@ -60,7 +66,19 @@ public class PlayerController : MonoBehaviour
 
 	}
 
+	public void OnDeath ()
+	{
+		
+		foreach (AnimatorControllerParameter p in anim.parameters) {
+			anim.SetBool (p.name, false);
+		}
+			
+		//anim.SetBool ("oneIsDead", true);
+		//anim.SetBool ("twoIsDead", true);
 
+		anim.Play ("BoyDeath");
+		anim.Play ("GirlDeath");
+	}
 
 	float Jump (float moveVertical)
 	{
@@ -88,11 +106,11 @@ public class PlayerController : MonoBehaviour
 			if (moveHorizontal != 0f) {
 				oneWalking = true;
 				oneIdle = false;
-			}
+			} 
 			if (moveVertical > 0f) {
 				oneJumping = true;
 				oneIdle = false;
-			}
+			} 
 			if (moveVertical > 0f && moveHorizontal != 0f) {
 				oneJumping = true;
 				oneWalking = false;
@@ -103,12 +121,19 @@ public class PlayerController : MonoBehaviour
 		} else if (!playerOne) {
 			if (moveHorizontal != 0f) {
 				twoWalking = true;
-			}
+				twoIdle = false;
+			} 
 			if (moveVertical > 0f) {
 				twoJumping = true;
+				twoIdle = false;
+			}
+			if (moveVertical > 0f && moveHorizontal != 0f) {
+				twoJumping = true;
+				twoWalking = false;
 			}
 			anim.SetBool ("twoIsWalking", twoWalking);
 			anim.SetBool ("twoIsJumping", twoJumping);
+			anim.SetBool ("twoIsIdle", twoIdle);
 		}
 	}
 
