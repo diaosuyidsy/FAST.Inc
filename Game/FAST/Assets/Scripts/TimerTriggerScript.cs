@@ -22,7 +22,7 @@ public class TimerTriggerScript : MonoBehaviour
 			GameManager.GM.OneRespawnPlace = gameObject;
 		if (coll.tag == "PlayerTwo")
 			GameManager.GM.TwoRespawnPlace = gameObject;
-		
+
 		otherAudioPlaying = otherTrigger.GetComponent<AudioSource> ().isPlaying;
 		
 		if (otherAudioPlaying) {
@@ -31,8 +31,11 @@ public class TimerTriggerScript : MonoBehaviour
 			
 		if (coll.tag == "PlayerOne" || coll.tag == "PlayerTwo") {
 			if (!alreadyPlayed) {
-				audio.Play ();
-				GameManager.GM.TimeTriggered ();
+
+				if (DialogueControl.DC.GameStarted) {
+					GameManager.GM.TimeTriggered ();
+					audio.Play ();
+				}
 				alreadyPlayed = true;
 			}
 		}

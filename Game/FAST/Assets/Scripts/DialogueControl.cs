@@ -54,6 +54,9 @@ public class DialogueControl : MonoBehaviour
 				Dialogue_Box_Text_Left.transform.parent.gameObject.SetActive (false);
 
 				GameStarted = true;
+				GameObject.Find ("TimerTriggerOne").GetComponent <AudioSource> ().Play ();
+				GameManager.GM.TimeTriggered ();
+
 			}
 			StartCoroutine (TypeSentence (openingDialogueQ_R.Dequeue (), true));
 			StartCoroutine (TypeSentence (openingDialogueQ_L.Dequeue (), false));

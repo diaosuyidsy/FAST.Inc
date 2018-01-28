@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 	public GameObject TwoRespawnPlace;
 	float cameraSizeNormal;
 
-	int timer = 5;
+	int timer = 60;
 	bool startTimer = false;
 
 	void Awake ()
@@ -31,12 +31,7 @@ public class GameManager : MonoBehaviour
 
 	void Start ()
 	{
-<<<<<<< HEAD
-//		TimeTriggered ();
-=======
 		cameraSizeNormal = camera_L.orthographicSize;
-		TimeTriggered ();
->>>>>>> f47cc91bee6f7a45a8795597b7de06eecaf16fbd
 	}
 
 	public void OnDeath ()
@@ -75,12 +70,18 @@ public class GameManager : MonoBehaviour
 		if (TwoRespawnPlace != null) {
 			playerTwo.transform.position = TwoRespawnPlace.transform.position;
 		}
+		// Reset Timer and Trigger
+		timer = 60;
+		TimeTriggered ();
 	}
 
 	public void TimeTriggered ()
 	{
-		if (startTimer)
+		if (startTimer) {
+			timer = 60;
 			return;
+
+		}
 		startTimer = true;
 		StartCoroutine (tt ());
 	}

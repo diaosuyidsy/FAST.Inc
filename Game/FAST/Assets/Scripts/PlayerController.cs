@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
 
 	float Jump (float moveVertical)
 	{
-		if ((Input.GetKeyDown (KeyCode.LeftShift) && playerOne) || (Input.GetKeyDown (KeyCode.Space) && !playerOne)) {
+		if ((Input.GetKeyDown (KeyCode.LeftShift) && playerOne) || (Input.GetKeyDown (KeyCode.RightShift) && !playerOne)) {
 			
 			if (isOnGround) {
 				moveVertical = 0f;
