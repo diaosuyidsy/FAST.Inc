@@ -9,6 +9,8 @@ public class selectDoorControl : MonoBehaviour
 	public Text Prompt;
 	public bool correctDoor;
 	public string InteractStr = "e";
+	public GameObject linkedDoor;
+	public GameObject linkedFloor;
 	bool canType;
 
 	void Update ()
@@ -24,6 +26,15 @@ public class selectDoorControl : MonoBehaviour
 					if (correctDoor) {
 						Prompt.text = "You are correct";
 						GetComponent<Animator> ().SetBool ("DoorOpen", true);
+						// If it got a linked door, open up linked doof
+						if (linkedDoor != null) {
+							for (int i = 0; i < linkedDoor.GetComponent<doorControl> ().maxCodeNum; i++) {
+								linkedDoor.GetComponent<doorControl> ().codeEnterCorrectly (i + 1);
+							}
+						}
+						if (linkedFloor != null) {
+							linkedFloor.SetActive (false);
+						}
 						GetComponent<BoxCollider2D> ().enabled = false;
 					} else
 						Prompt.text = "DEAD YOU ARE";
