@@ -6,9 +6,12 @@ public class platformControl : MonoBehaviour
 {
 	public Transform[] MovePoints;
 	public float MoveSpeed;
+	public bool stopAtLastPoint = false;
+	public GameObject pillar;
 	Vector3[] pts;
 	Vector3 nextTargetPoint;
 	int nextPointPointer = 0;
+	bool stop = false;
 
 
 	void Start ()
@@ -22,18 +25,29 @@ public class platformControl : MonoBehaviour
 
 	void Update ()
 	{
+		if (stop)
+			return;
+		
+		if (pillar != null)
+			extendPillar ();
+		
 		nextTargetPoint = pts [nextPointPointer];
 		Vector3 diff = nextTargetPoint - transform.position;
 		diff.Normalize ();
-
-//		float rot_z = Mathf.Atan2 (diff.y, diff.x) * Mathf.Rad2Deg;
-//		transform.rotation = Quaternion.Euler (0f, 0f, rot_z - 90);
 
 		if (Vector3.Distance (transform.position, nextTargetPoint) >= 0.03f) {
 			transform.position += new Vector3 (diff.x, diff.y) * MoveSpeed * Time.deltaTime * 0.7f;
 		} else {
 			nextPointPointer = (nextPointPointer + 1) % pts.Length;
+			// Stop at last point if specificed
+			if (stopAtLastPoint && nextPointPointer == 0)
+				stop = true;
 		}
+	}
+
+	void extendPillar ()
+	{
+		pillar.transform.localScale += new Vector3 (0, Time.deltaTime * 0.34f * ((nextTargetPoint.y - transform.position.y > 0) ? 1f : -1f));
 	}
 		
 }

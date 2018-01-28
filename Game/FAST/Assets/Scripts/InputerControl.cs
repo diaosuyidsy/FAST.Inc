@@ -9,6 +9,7 @@ public class InputerControl : MonoBehaviour
 	public int CorrectNum = 3;
 	public int serialNumber;
 	public GameObject InputObjectFor;
+	public GameObject InputObjectForTwo;
 	private bool canType = false;
 	private bool solved = false;
 
@@ -19,13 +20,16 @@ public class InputerControl : MonoBehaviour
 			foreach (char c in Input.inputString) {
 				
 				answer = c.ToString ();
-				Debug.Log (answer);
+				Debug.Log ("Answer entered: " + answer);
 				// If player got correct Num, display it
 				if (answer == CorrectNum.ToString ()) {
-					Debug.Log (answer);
+					Debug.Log ("Is correct: " + answer);
 					InputterText.text = answer.ToString ();
 					// Then tell the door the player got it
 					InputObjectFor.GetComponent<doorControl> ().codeEnterCorrectly (serialNumber);
+					if (InputObjectForTwo != null) {
+						InputObjectForTwo.GetComponent<doorControl> ().codeEnterCorrectly (serialNumber);
+					}
 					// Disable the canType so player cannot repeatly enter numbers
 					canType = false;
 					// Marked it as solved

@@ -24,12 +24,29 @@ public class selectDoorControl : MonoBehaviour
 					if (correctDoor) {
 						Prompt.text = "You are correct";
 						GetComponent<Animator> ().SetBool ("DoorOpen", true);
+						GetComponent<BoxCollider2D> ().enabled = false;
 					} else
 						Prompt.text = "DEAD YOU ARE";
 					// Disable the canType so player cannot repeatly enter numbers
 					canType = false;
 				}
 			}
+		}
+	}
+
+	void OnCollisionStay2D (Collision2D coll)
+	{
+		if (coll.collider.tag == "PlayerOne" || coll.collider.tag == "PlayerTwo") {
+			Prompt.gameObject.SetActive (true);
+			canType = true;
+		}
+	}
+
+	void OnCollisionExit2D (Collision2D coll)
+	{
+		if (coll.collider.tag == "PlayerOne" || coll.collider.tag == "PlayerTwo") {
+			Prompt.gameObject.SetActive (false);
+			canType = false;
 		}
 	}
 

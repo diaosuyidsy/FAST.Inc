@@ -10,6 +10,13 @@ public class DeathZone : MonoBehaviour
 	{
 		if (coll.collider.tag == "PlayerOne" || coll.collider.tag == "PlayerTwo") {
 			GameManager.GM.OnDeath ();
+		} else {
+			Destroy (coll.gameObject);
 		}
+	}
+
+	void OnTriggerEnter2D (Collider2D coll)
+	{
+		Destroy (coll.gameObject);
 	}
 }
