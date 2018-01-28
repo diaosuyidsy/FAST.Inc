@@ -18,7 +18,14 @@ public class InputerControl : MonoBehaviour
 		if (canType) {
 			string answer = "";
 			foreach (char c in Input.inputString) {
-				
+				bool ANumber = false;
+				for (int i = 0; i < 10; i++) {
+					if (i.ToString () == c.ToString ()) {
+						ANumber = true;
+					}
+				}
+				if (!ANumber)
+					return;
 				answer = c.ToString ();
 				Debug.Log ("Answer entered: " + answer);
 				// If player got correct Num, display it
@@ -34,6 +41,8 @@ public class InputerControl : MonoBehaviour
 					canType = false;
 					// Marked it as solved
 					solved = true;
+				} else{
+					GameManager.GM.OnDeath ();
 				}
 			}
 		}

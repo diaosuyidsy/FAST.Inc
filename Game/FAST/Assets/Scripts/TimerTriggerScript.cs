@@ -16,11 +16,11 @@ public class TimerTriggerScript : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D coll){
 
-		otherAudioPlaying = otherTrigger.GetComponent<AudioSource> ().isPlaying;
-		
 		if (otherAudioPlaying){
 			return;
 		}
+
+		otherAudioPlaying = otherTrigger.GetComponent<AudioSource> ().isPlaying;
 			
 		if (coll.tag == "PlayerOne" || coll.tag == "PlayerTwo") {
 			if (!alreadyPlayed) {
