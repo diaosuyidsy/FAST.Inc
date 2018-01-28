@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class MusicBlockControl : MonoBehaviour {
 
-	public int correctNum = 1;
 	public int serialNum = 1;
+	public int codeNum = 1;
 	public GameObject inputObject; //Drag in inspector. 
+	public bool playerOne = true;
 
 	AudioSource sound;
 
@@ -19,7 +20,7 @@ public class MusicBlockControl : MonoBehaviour {
 		if (coll.gameObject.tag == "PlayerOne" || coll.gameObject.tag == "PlayerTwo") {
 			sound.Play ();
 
-			inputObject.GetComponent<doorControl> ().codeEnterCorrectly (serialNum);
+			inputObject.GetComponent<doorControl> ().checkMusicCode (serialNum,codeNum);
 		}
 	}
 }
