@@ -3,13 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-<<<<<<< HEAD
-  tags: []
-=======
   tags:
   - PlayerOne
   - MovingPlatform
->>>>>>> 5b1920269c3f4a4dc94c1ad5be11b0766c6e6b8e
   layers:
   - Default
   - TransparentFX
@@ -47,12 +43,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-<<<<<<< HEAD
-=======
   - name: Background
-    uniqueID: 1670690571
+    uniqueID: 2160306295
     locked: 0
   - name: Player
-    uniqueID: 987833817
+    uniqueID: 1787969717
     locked: 0
->>>>>>> 5b1920269c3f4a4dc94c1ad5be11b0766c6e6b8e
