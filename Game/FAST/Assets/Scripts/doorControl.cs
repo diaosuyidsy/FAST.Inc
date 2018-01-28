@@ -6,6 +6,8 @@ using UnityEngine;
 public class doorControl : MonoBehaviour
 {
 	public int maxCodeNum = 3;
+	public GameObject timerMusic;
+
 	bool[] CodeEntered;
 	int codeEntered = 0;
 	bool startLifting = false;
@@ -34,6 +36,7 @@ public class doorControl : MonoBehaviour
 			GetComponent<Animator> ().SetBool ("DoorOpen", true);
 			audio.Play ();
 			coll.enabled = !coll.enabled;
+			timerMusic.GetComponent<AudioSource> ().Stop ();
 		}
 	}
 }
