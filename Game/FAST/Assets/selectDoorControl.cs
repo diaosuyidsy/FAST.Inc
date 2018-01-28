@@ -21,9 +21,10 @@ public class selectDoorControl : MonoBehaviour
 				Debug.Log (answer);
 				// If player got correct Num, display it
 				if (answer == InteractStr) {
-					if (correctDoor)
+					if (correctDoor) {
 						Prompt.text = "You are correct";
-					else
+						GetComponent<Animator> ().SetBool ("DoorOpen", true);
+					} else
 						Prompt.text = "DEAD YOU ARE";
 					// Disable the canType so player cannot repeatly enter numbers
 					canType = false;
