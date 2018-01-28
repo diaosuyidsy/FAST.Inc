@@ -26,12 +26,12 @@ public class SawControl : MonoBehaviour
 		nextTargetPoint = pts [nextPointPointer];
 		Vector3 diff = nextTargetPoint - transform.position;
 		diff.Normalize ();
-
-		float rot_z = Mathf.Atan2 (diff.y, diff.x) * Mathf.Rad2Deg;
-		transform.rotation = Quaternion.Euler (0f, 0f, rot_z - 90);
+//
+//		float rot_z = Mathf.Atan2 (diff.y, diff.x) * Mathf.Rad2Deg;
+//		transform.rotation = Quaternion.Euler (0f, 0f, rot_z - 90);
 
 		if (Vector3.Distance (transform.position, nextTargetPoint) >= 0.03f) {
-			transform.position += transform.up * MoveSpeed * Time.deltaTime * 0.7f;
+			transform.position += new Vector3 (diff.x, diff.y) * MoveSpeed * Time.deltaTime * 0.7f;
 		} else {
 			nextPointPointer = (nextPointPointer + 1) % pts.Length;
 		}
@@ -40,7 +40,7 @@ public class SawControl : MonoBehaviour
 	void OnTriggerEnter2D (Collider2D coll)
 	{
 		if (coll.tag == "PlayerOne" || coll.tag == "PlayerTwo") {
-			Debug.Log ("Player Die");
+			GameManager.GM.OnDeath ();
 		}
 	}
 }
